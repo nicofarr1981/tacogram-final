@@ -17,6 +17,12 @@
         <img src="<%= post["image"] %>" class="img-fluid">
       <% end %>
       <p><%= post["body"] %></p>
+      <table>
+        <tr>
+          <td><%= button_to "Edit", post_path(post), method: :update, class: "btn btn-primary" %></td>
+          <td><%= button_to "Delete", post_path(post), method: :delete, class: "btn btn-primary" %></td>
+        </tr>
+      </table>
     </div>
   <% end %>
 </div>

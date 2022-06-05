@@ -27,6 +27,25 @@ class PostsController < ApplicationController
     redirect_to "/posts"
   end
 
+  def edit
+    @post = Post.find_by({ "id" => params["id"] })
+  end
+
+  def update
+    @post = Post.find_by({ "id" => params["id"] })
+    @post["body"] = params["post"]["body"]
+    @post.save
+    redirect_to "/posts"
+  end
+
+  def destroy
+    if @current_user
+      @post = Post.find_by({ "id" => params["id"] })
+      @post.destroy
+      redirect_to "/posts"
+    end
+  end
+
   # before_action :allow_cors
   # def allow_cors
   #   response.headers['Access-Control-Allow-Origin'] = '*'
